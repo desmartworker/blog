@@ -22,8 +22,9 @@
     dataUrl: 'posts.json',                 // the only file you need to update to publish
     portfolioUrl: 'https://meikelwis.com'  // used when posts.json does not set "portfolio"
   };
-  /* apply the saved theme before paint so there is no flash */
-  (function(){ try{ var t=localStorage.getItem('theme'); if(!t) t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'; document.documentElement.setAttribute('data-theme',t); }catch(e){} })();
+  /* apply the saved theme before paint so there is no flash (defaults to light) */
+  document.documentElement.setAttribute('data-theme','light');
+  (function(){ try{ var t=localStorage.getItem('theme'); if(t==='dark') document.documentElement.setAttribute('data-theme','dark'); }catch(e){} })();
 </script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
